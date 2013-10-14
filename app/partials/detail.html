@@ -1,0 +1,37 @@
+<form class="form-horizontal" role="form" name="myForm">
+
+    <div class="form-group" ng-class="{'has-error': myForm.name.$invalid, 'has-success': myForm.name.$valid }">
+        <label for="inputName" class="col-lg-2 control-label">全名</label>
+
+        <div class="col-lg-10">
+            <input type="text" name="name" id="inputName" class="form-control" ng-model="user.name" required>
+            <span ng-show="myForm.name.$error.required" class="help-block"> 不能为空</span>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error': myForm.email.$invalid, 'has-success': myForm.email.$valid }">
+        <label for="inputEmail" class="col-lg-2 control-label">电子邮箱</label>
+
+        <div class="col-lg-10">
+            <input type="email" name="email" id="inputEmail" class="form-control" ng-model="user.email" required>
+            <span ng-show="myForm.email.$error.required" class="help-block"> 不能为空</span>
+            <span ng-show="myForm.email.$error.email" class="help-block"> 邮箱地址格式不正确</span>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error': myForm.cellphone.$invalid, 'has-success': myForm.cellphone.$valid }">
+        <label for="inputCellphone" class="col-lg-2 control-label">手机号</label>
+
+        <div class="col-lg-10">
+            <input type="number" name="cellphone" id="inputCellphone" class="form-control" ng-model="user.cellphone" required>
+            <span ng-show="myForm.cellphone.$error.required" class="help-block"> 不能为空</span>
+            <span ng-show="myForm.cellphone.$error.number" class="help-block"> 格式不正确，只能为数字</span>
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <a href="#/" class="btn btn-default">Cancel</a>
+            <button ng-click="save()" ng-disabled="isClean() || myForm.$invalid" class="btn btn-primary">Save</button>
+            <button ng-click="destroy()"  ng-show="user.$id" class="btn btn-danger">Delete</button>
+        </div>
+    </div>
+</form>
